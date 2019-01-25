@@ -1,0 +1,14 @@
+.navbar {
+    background-color: rgb(81, 51, 164);
+    color: #fff;
+    width: 100%;
+}
+
+.navbar a {
+    color: #fff;
+    font-weight: 900;
+}
+
+.navbar li {
+    width: 33.3%;
+}
