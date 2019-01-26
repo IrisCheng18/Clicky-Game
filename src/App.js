@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "./components/Navbar"
 import Header from "./components/Header"
 import Card from "./components/Card"
+import Footer from "./components/Footer"
 import cards from "./cards.json"
 import "./App.css"
 
@@ -54,7 +55,7 @@ class App extends Component {
         prevId: [...this.state.prevId, id],
         msg: "You guessed correctly!"
       });
-    } 
+    }
     else {
       if (this.checkId(id, this.state.prevId)) {
         if (this.state.topscore < this.state.score) {
@@ -70,19 +71,19 @@ class App extends Component {
 
         this.setState({ msg: "You guessed incorrectly" });
       } else {
-          if (this.state.topscore === this.state.score) {
-            this.setState({
-              topscore: this.state.topscore + 1,
-              score: this.state.score + 1,
-              prevId: [...this.state.prevId, id]
-            });
-          } else {
-            this.setState({
-              score: this.state.score + 1,
-              prevId: [...this.state.prevId, id]
-            });
-          }
-          this.setState({ msg: "You guessed correctly" });
+        if (this.state.topscore === this.state.score) {
+          this.setState({
+            topscore: this.state.topscore + 1,
+            score: this.state.score + 1,
+            prevId: [...this.state.prevId, id]
+          });
+        } else {
+          this.setState({
+            score: this.state.score + 1,
+            prevId: [...this.state.prevId, id]
+          });
+        }
+        this.setState({ msg: "You guessed correctly" });
       };
     };
 
@@ -133,8 +134,9 @@ class App extends Component {
               </div>
             ))}
           </div>
-
         </div>
+
+        <Footer />
       </div>
     );
   }
