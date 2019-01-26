@@ -45,6 +45,7 @@ class App extends Component {
 
   handleImageClicked = id => {
     // console.log(`id=${id} prevId=${this.state.prevId} topscore=${this.state.topscore} score=${this.state.score}`);
+    this.shuffleCards();
 
     if (this.state.topscore === 0) {
       this.setState({
