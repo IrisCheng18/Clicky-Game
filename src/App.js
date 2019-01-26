@@ -11,7 +11,8 @@ class App extends Component {
     score: 0,
     topscore: 0,
     prevId: [],
-    cards: cards
+    cards: cards,
+    msg: "Click an image to begin!"
   };
 
   componentDidMount() {
@@ -33,7 +34,7 @@ class App extends Component {
 
   checkId = (id, prevId) => {
     for (let i = 1; i <= prevId.length; i++) {
-      if (prevId[i-1] === id) {
+      if (prevId[i - 1] === id) {
         prevId.length = 0;
         return 1;
       };
@@ -43,62 +44,61 @@ class App extends Component {
   };
 
   handleImageClicked = id => {
-    console.log(`id=${id} prevId=${this.state.prevId} topscore=${this.state.topscore} score=${this.state.score}`);
+    // console.log(`id=${id} prevId=${this.state.prevId} topscore=${this.state.topscore} score=${this.state.score}`);
 
     if (this.state.topscore === 0) {
-      console.log(1);
       this.setState({
         topscore: this.state.topscore + 1,
         score: this.state.score + 1,
-        prevId: [...this.state.prevId, id]
+        prevId: [...this.state.prevId, id],
+        msg: "You guessed correctly!"
       });
-    } else {
+    } 
+    else {
       if (this.checkId(id, this.state.prevId)) {
-        console.log(2);
         if (this.state.topscore < this.state.score) {
-          console.log(3);
           this.setState({
             topscore: this.state.score,
             score: 0,
           });
         } else {
-          console.log(4);
           this.setState({
             score: 0,
           });
         };
 
+        this.setState({ msg: "You guessed incorrectly" });
       } else {
-        if (this.state.topscore === this.state.score) {
-          console.log(5);
-          this.setState({
-            topscore: this.state.topscore + 1,
-            score: this.state.score + 1,
-            prevId: [...this.state.prevId, id]
-          });
-        } else {
-          console.log(6);
-          this.setState({ 
-            score: this.state.score + 1,
-            prevId: [...this.state.prevId, id]
-          });
-        }
-
+          if (this.state.topscore === this.state.score) {
+            this.setState({
+              topscore: this.state.topscore + 1,
+              score: this.state.score + 1,
+              prevId: [...this.state.prevId, id]
+            });
+          } else {
+            this.setState({
+              score: this.state.score + 1,
+              prevId: [...this.state.prevId, id]
+            });
+          }
+          this.setState({ msg: "You guessed correctly" });
       };
     };
+
   };
 
 
   render() {
     return (
       <div className="App">
-        <Navbar score={this.state.score} topscore={this.state.topscore} />
+        <Navbar score={this.state.score} topscore={this.state.topscore} message={this.state.msg} />
         <Header image='/images/geometry2.png' />
         <div className="container">
           <div className="row">
             {this.state.cards.slice(0, 4).map(item => (
-              <div className="col-md-3">
+              <div className="col-md-3" key={item.id}>
                 <Card
+                  key={item.id}
                   id={item.id}
                   image={item.image}
                   handleClicked={this.handleImageClicked}
@@ -109,8 +109,9 @@ class App extends Component {
 
           <div className="row">
             {this.state.cards.slice(4, 8).map(item => (
-              <div className="col-md-3">
+              <div className="col-md-3" key={item.id}>
                 <Card
+                  key={item.id}
                   id={item.id}
                   image={item.image}
                   handleClicked={this.handleImageClicked}
@@ -121,8 +122,9 @@ class App extends Component {
 
           <div className="row">
             {this.state.cards.slice(8, 12).map(item => (
-              <div className="col-md-3">
+              <div className="col-md-3" key={item.id}>
                 <Card
+                  key={item.id}
                   id={item.id}
                   image={item.image}
                   handleClicked={this.handleImageClicked}

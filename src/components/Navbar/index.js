@@ -8,7 +8,7 @@ function Navbar(props) {
                 <a className="navbar-brand" href="/">Clicky Game</a>
             </div>
             <div className="navbar-item col-md-4">
-                <span className="navbar-text">Click an image to begin!</span>
+                <span className="navbar-text">{props.message}</span>
             </div>
             <div className="navbar-item col-md-4">
                 <span className="navbar-text">Score: {props.score} | Top Score: {props.topscore}</span>
