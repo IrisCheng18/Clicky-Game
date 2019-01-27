@@ -5,6 +5,7 @@
     border: 5px solid #f1f1f1;
     border-radius: 3px;
     box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    transition: transform .2s;
 }
 
 .image {
@@ -12,11 +13,12 @@
     height:100%;
 }
 
-.card>.image:hover {
-    animation: shake 0.5s; 
+.card:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.1);
     cursor: pointer;
 }
-@keyframes shake {
+/* @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
     20% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -28,4 +30,4 @@
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
+} */

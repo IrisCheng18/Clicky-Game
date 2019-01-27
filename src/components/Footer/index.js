@@ -3,7 +3,7 @@ import "./style.css"
 
 function Footer(props) {
     return (
-        <footer class="mt-auto py-3 text-center">
+        <footer class="footer mt-auto py-3 text-center">
             <span> Clicky Game! <i class="fab fa-react fa-spin"></i></span>
         </footer>
     );
